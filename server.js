@@ -6,8 +6,13 @@ const ingredientRouter = require(`./routes/ingredients.routes`);
 const fullRecipesRouter = require(`./routes/fullRecipes.routes`);
 const randomRouter = require(`./routes/randomRecipe.routes`);
 
-app.use(express.json());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
+app.use(express.json());
 app.use(`/recipes`, recipeRouter);
 app.use(`/ingredients`, ingredientRouter);
 app.use(`/fullrecipes`, fullRecipesRouter);
