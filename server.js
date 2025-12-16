@@ -6,6 +6,8 @@ const ingredientRouter = require(`./routes/ingredients.routes`);
 const fullRecipesRouter = require(`./routes/fullRecipes.routes`);
 const randomRouter = require(`./routes/randomRecipe.routes`);
 
+app.use(express.json());
+
 app.use(`/recipes`, recipeRouter);
 app.use(`/ingredients`, ingredientRouter);
 app.use(`/fullrecipes`, fullRecipesRouter);
